@@ -1,0 +1,15 @@
+[
+  {
+    "name": "helloworld",
+    "image": "nginxdemos/hello:latest",
+    "cpu": 128,
+    "memory": 10,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80
+      }
+    ]
+  }
+]

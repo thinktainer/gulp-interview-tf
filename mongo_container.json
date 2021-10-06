@@ -1,0 +1,15 @@
+[
+  {
+    "name": "mongodb",
+    "image": "bitnami/mongodb:latest",
+    "cpu": 1536,
+    "memory": 768,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 27017,
+        "hostPort": 27017
+      }
+    ]
+  }
+]
