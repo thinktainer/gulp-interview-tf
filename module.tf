@@ -6,6 +6,7 @@ terraform {
       version = "~> 3.0"
       source = "hashicorp/aws"
     }
+    template = ">= 2.0"
   }
 
   backend "s3" {

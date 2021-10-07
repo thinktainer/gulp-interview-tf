@@ -50,18 +50,25 @@ resource "aws_subnet" "database-az-a" {
   vpc_id = aws_vpc.main.id
   availability_zone = var.availability_zone_names[0]
   cidr_block = "10.0.100.0/24"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "database-a"
   }
 }
 
+resource "aws_route_table_association" "database-az-a-rt" {
+  subnet_id = aws_subnet.database-az-a.id
+  route_table_id = aws_vpc.main.main_route_table_id
+}
+
+
 resource "aws_lb" "web-public" {
   name = "web-pub"
   internal = false
   load_balancer_type = "application"
   subnets = [aws_subnet.web-az-a.id, aws_subnet.web-az-b.id]
-  enable_deletion_protection = true
+  enable_deletion_protection = false
   security_groups = [aws_security_group.lb.id]
 
   depends_on = [aws_internet_gateway.gw]

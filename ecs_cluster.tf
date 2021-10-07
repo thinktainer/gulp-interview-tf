@@ -33,6 +33,8 @@ resource "aws_ecs_service" "web-server" {
 
   network_configuration {
     subnets = [aws_subnet.web-az-a.id, aws_subnet.web-az-b.id]
+    security_groups = [aws_security_group.lb.id]
+    assign_public_ip = true
   }
 
   load_balancer {
